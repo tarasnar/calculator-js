@@ -16,18 +16,18 @@ function division(num1, num2) {
 }
 
 //Create variable to store first number, operator, second number
-let num1;
+let num1 = [];
 let operator;
-let num2;
+let num2 = [];
 
 //Start event listening on all number buttons
 const numberButtons = document.querySelectorAll('.numbers');
 numberButtons.forEach(button => {
     button.addEventListener('click', () => {
-        if (num1 === undefined) {
-            num1 = +button.innerText;
-        } else if (num2 === undefined) {
-            num2 = +button.innerText;
+        if (operator === undefined) {
+            num1.push(+button.innerText)
+        } else {
+            num2.push(+button.innerText);
         }
     });
 });
@@ -36,14 +36,20 @@ numberButtons.forEach(button => {
 const operatorButtons = document.querySelectorAll('.operators');
 operatorButtons.forEach(button => {
     button.addEventListener('click', () => {
-        if (operator === undefined) {
+        if (operator !== undefined && num1.length > 0 && num2.length > 0) {
+            operate(num1, operator, num2);
+            operator = undefined;
+            num1 = num2 = [];
+        } else {
             operator = button.innerText;
-        } else {}
+        }
     });
 });
 
 //Create function operate which will perform operations based on the operator
 function operate(num1, operator, num2) {
+    num1 = Number(num1.join(''));
+    num2 = Number(num2.join(''));
     switch(operator) {
         case '+':
             return addition(num1, num2);
@@ -63,12 +69,16 @@ function operate(num1, operator, num2) {
 const evaluationButton = document.querySelector('.evaluation');
 evaluationButton.addEventListener('click', () => {
     operate(num1, operator, num2);
-    num1 = operator = num2 = undefined;
+    operator = undefined;
+    num1 = num2 = [];
 });
 
 //Write a logic to store more than a single number in a variable
+//Done
     //Make an array to store the numbers entered until operator pressed
-    //then fill the array for a second number until operator or = is pressed
+    //Done
+    //Fill the array for a second number until operator or = is pressed
+    //Half-done
 //Write a logic so that the previous result is stored for next operation
     //When one of the buttons for result is pressed
     // put the number in a separate variable which then use in operations
