@@ -42,8 +42,8 @@ operatorButtons.forEach(button => {
         if (operator !== undefined && num1.length > 0 && num2.length > 0) {
                 num1[0] = operate(num1, operator, num2);
                 screen.innerText = num1[0];
-                clear();
-            //}
+                num1.splice(1);
+                num2 = [];
         } else {
             operator = button.innerText;
         }
@@ -52,7 +52,6 @@ operatorButtons.forEach(button => {
 
 function clear() {
     num1.splice(1);
-    //operator = undefined;
     num2 = [];
 }
 
@@ -79,5 +78,7 @@ function operate(num1, operator, num2) {
 const evaluationButton = document.querySelector('.evaluation');
 evaluationButton.addEventListener('click', () => {
     operate(num1, operator, num2);
-    clear();
+    screen.innerText = operate(num1, operator, num2);
+    num1 = num2 = [];
+    operator = undefined;
 });
