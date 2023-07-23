@@ -1,20 +1,21 @@
 //Create functions for addition, subtraction, multiplication and division
 function addition(num1, num2) {
-    console.log(num1 + num2);
+    return num1 + num2;
 }
 
 function subtraction(num1, num2) {
-    console.log(num1 - num2);
+    return num1 - num2;
 }
 
 function multiplication(num1, num2) {
-    console.log(num1 * num2);
+    return num1 * num2;
 }
 
 function division(num1, num2) {
-    console.log(num1 / num2);
+    return num1 / num2;
 }
 
+let screen = document.querySelector('#screen');
 //Create variable to store first number, operator, second number
 let num1 = [];
 let operator;
@@ -26,8 +27,10 @@ numberButtons.forEach(button => {
     button.addEventListener('click', () => {
         if (operator === undefined) {
             num1.push(+button.innerText)
+            screen.innerText = num1.join('');
         } else {
             num2.push(+button.innerText);
+            screen.innerText = num2.join('');
         }
     });
 });
@@ -37,14 +40,21 @@ const operatorButtons = document.querySelectorAll('.operators');
 operatorButtons.forEach(button => {
     button.addEventListener('click', () => {
         if (operator !== undefined && num1.length > 0 && num2.length > 0) {
-            operate(num1, operator, num2);
-            operator = undefined;
-            num1 = num2 = [];
+                num1[0] = operate(num1, operator, num2);
+                screen.innerText = num1[0];
+                clear();
+            //}
         } else {
             operator = button.innerText;
         }
     });
 });
+
+function clear() {
+    num1.splice(1);
+    //operator = undefined;
+    num2 = [];
+}
 
 //Create function operate which will perform operations based on the operator
 function operate(num1, operator, num2) {
@@ -69,16 +79,5 @@ function operate(num1, operator, num2) {
 const evaluationButton = document.querySelector('.evaluation');
 evaluationButton.addEventListener('click', () => {
     operate(num1, operator, num2);
-    operator = undefined;
-    num1 = num2 = [];
+    clear();
 });
-
-//Write a logic to store more than a single number in a variable
-//Done
-    //Make an array to store the numbers entered until operator pressed
-    //Done
-    //Fill the array for a second number until operator or = is pressed
-    //Half-done
-//Write a logic so that the previous result is stored for next operation
-    //When one of the buttons for result is pressed
-    // put the number in a separate variable which then use in operations
