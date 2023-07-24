@@ -15,7 +15,7 @@ function division(num1, num2) {
     return num1 / num2;
 }
 
-let screen = document.querySelector('#screen');
+let screen = document.querySelector('#calc-screen');
 //Create variable to store first number, operator, second number
 let num1 = [];
 let operator;
@@ -44,6 +44,7 @@ operatorButtons.forEach(button => {
                 screen.innerText = num1[0];
                 num1.splice(1);
                 num2 = [];
+                operator = button.innerText;
         } else {
             operator = button.innerText;
         }
@@ -73,10 +74,20 @@ function operate(num1, operator, num2) {
 const evaluationButton = document.querySelector('.evaluation');
 evaluationButton.addEventListener('click', () => {
     screen.innerText = operate(num1, operator, num2);
+    clear();
+});
+
+function clear() {
     num1 = [];
     num2 = [];
     operator = undefined;
+}
+
+const clearButton = document.querySelector('.clear');
+clearButton.addEventListener('click', () => {
+    clear();
+    screen.replaceChildren();
 });
 
-//Create logic so operator can be reset and not equal same operation until evaluation
-//Create button and logic to clear the screen and results
+//Make calculator start from 0 and then add up to its value
+//Make calculator choose the correct variable for pushing the numbers if operator is pressed first

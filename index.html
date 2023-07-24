@@ -11,32 +11,36 @@
         <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@600&display=swap" rel="stylesheet">
     </head>
     <body>
-        <div id="calculator-body">
-            <div id="screen"></div>
-            <div id="buttons">
-                <div class="number-buttons">
-                    <button class="numbers">7</button>
-                    <button class="numbers">4</button>
-                    <button class="numbers">1</button>
-                    <button class="numbers">0</button>
-                </div>
-                <div class="number-buttons">
-                    <button class="numbers">8</button>
-                    <button class="numbers">5</button>
-                    <button class="numbers">2</button>
-                </div>
-                <div class="number-buttons">
-                    <button class="numbers">9</button>
-                    <button class="numbers">6</button>
-                    <button class="numbers">3</button>
-                </div>
-                <div id="operations">
-                    <button class="operators">/</button>
-                    <button class="operators">*</button>
-                    <button class="operators">-</button>
-                    <button class="operators">+</button>
-                    <button class="evaluation">=</button>
-                </div>
+        <div id="calc-screen"></div>
+        <div id="calc-body">
+            <div class="button-container">
+                <button class="clear">AC</button>
+                <button class="functional">+/-</button>
+                <button class="functional">%</button>
+                <button class="operators">/</button>
+            </div>
+            <div class="button-container">
+                <button class="numbers">7</button>
+                <button class="numbers">8</button>
+                <button class="numbers">9</button>
+                <button class="operators">*</button>
+            </div>
+            <div class="button-container">
+                <button class="numbers">4</button>
+                <button class="numbers">5</button>
+                <button class="numbers">6</button>
+                <button class="operators">-</button>
+            </div>
+            <div class="button-container">
+                <button class="numbers">1</button>
+                <button class="numbers">2</button>
+                <button class="numbers">3</button>
+                <button class="operators">+</button>
+            </div>
+            <div class="button-container">
+                <button class="numbers" id="zero">0</button>
+                <button>.</button>
+                <button class="evaluation">=</button>
             </div>
         </div>
     </body>
