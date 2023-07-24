@@ -50,11 +50,6 @@ operatorButtons.forEach(button => {
     });
 });
 
-function clear() {
-    num1.splice(1);
-    num2 = [];
-}
-
 //Create function operate which will perform operations based on the operator
 function operate(num1, operator, num2) {
     num1 = Number(num1.join(''));
@@ -77,8 +72,8 @@ function operate(num1, operator, num2) {
 //Start event listening on evaluation button
 const evaluationButton = document.querySelector('.evaluation');
 evaluationButton.addEventListener('click', () => {
-    operate(num1, operator, num2);
     screen.innerText = operate(num1, operator, num2);
-    num1 = num2 = [];
+    num1 = [];
+    num2 = [];
     operator = undefined;
 });
