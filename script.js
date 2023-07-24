@@ -77,3 +77,6 @@ evaluationButton.addEventListener('click', () => {
     num2 = [];
     operator = undefined;
 });
+
+//Create logic so operator can be reset and not equal same operation until evaluation
+//Create button and logic to clear the screen and results
