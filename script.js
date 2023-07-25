@@ -26,16 +26,19 @@ let num2 = [];
 const numberButtons = document.querySelectorAll('.numbers');
 numberButtons.forEach(button => {
     button.addEventListener('click', () => {
-        if (operator !== undefined) {
-            num2.push(button.innerText);
-            screen.innerText = num2.join('');
-        } else if (button.innerText !== '0' && num1[0] === '0') {
+        if (operator === undefined) {
+            //If we are in num1 and press 0
+            if (button.innerText !== '0' && num1[0] === '0') {
                 num1 = [];
                 num1.push(button.innerText);
                 screen.innerText = num1.join('');
+            } else if (button.innerText === '0' && num1[0] !== '0') {
+                num1.push(button.innerText);
+                screen.innerText = num1.join('');
+            }
         } else {
-            num1.push(button.innerText);
-            screen.innerText = num1.join('');
+            num2.push(button.innerText);
+            screen.innerText = num2.join('');
         }
     });
 });
@@ -100,6 +103,6 @@ clearButton.addEventListener('click', () => {
     screen.innerText = num1.join('');
 });
 
-//Make . button work and append to array 1 or 2
+//Make . button work and append to array 1 or 2 once
 //Make +/- work and put the correct sign at the start of a number
 //Make % button work and output 1% of the number present
