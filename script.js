@@ -17,7 +17,8 @@ function division(num1, num2) {
 
 let screen = document.querySelector('#calc-screen');
 //Create variable to store first number, operator, second number
-let num1 = [];
+let num1 = ['0'];
+screen.innerText = num1.join('');
 let operator;
 let num2 = [];
 
@@ -25,12 +26,16 @@ let num2 = [];
 const numberButtons = document.querySelectorAll('.numbers');
 numberButtons.forEach(button => {
     button.addEventListener('click', () => {
-        if (operator === undefined) {
-            num1.push(+button.innerText)
-            screen.innerText = num1.join('');
-        } else {
-            num2.push(+button.innerText);
+        if (operator !== undefined) {
+            num2.push(button.innerText);
             screen.innerText = num2.join('');
+        } else if (button.innerText !== '0' && num1[0] === '0') {
+                num1 = [];
+                num1.push(button.innerText);
+                screen.innerText = num1.join('');
+        } else {
+            num1.push(button.innerText);
+            screen.innerText = num1.join('');
         }
     });
 });
@@ -66,7 +71,11 @@ function operate(num1, operator, num2) {
             return multiplication(num1, num2);
 
         case '/':
-            return division(num1, num2);
+            if (num2 === 0) {
+                return 'hell no';
+            } else {
+                return division(num1, num2);
+            }
     }
 }
 
@@ -77,17 +86,20 @@ evaluationButton.addEventListener('click', () => {
     clear();
 });
 
+//Function to empty variables and start over
 function clear() {
-    num1 = [];
+    num1 = ['0'];
     num2 = [];
     operator = undefined;
 }
 
+//Button calling the clear function and displaying the initial value
 const clearButton = document.querySelector('.clear');
 clearButton.addEventListener('click', () => {
     clear();
-    screen.replaceChildren();
+    screen.innerText = num1.join('');
 });
 
-//Make calculator start from 0 and then add up to its value
-//Make calculator choose the correct variable for pushing the numbers if operator is pressed first
+//Make . button work and append to array 1 or 2
+//Make +/- work and put the correct sign at the start of a number
+//Make % button work and output 1% of the number present
