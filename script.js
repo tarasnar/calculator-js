@@ -97,7 +97,7 @@ function findDot(element) {
 
 //Function to update screen
 function updateScreen(element) {
-    screen.innerText = element.join('');
+    screen.innerText = element.join('').slice(0,9);
 }
 
 //Function to empty variables and start over
@@ -125,9 +125,15 @@ numberButtons.forEach(button => {
 
 operatorButtons.forEach(button => {
     button.addEventListener('click', () => {
-        if (operator !== undefined && num1.length > 0 && num2.length > 0) {
-            evaluate();
-            operator = button.innerText;
+        if (operator !== undefined) {
+            if (num1.length > 0 && num2.length > 0) {
+                evaluate();
+                operator = button.innerText;
+            } else if (num1.length > 0 && num2.length < 1) {
+                num1 = [operate(num1, operator, num1)];
+                updateScreen(num1);
+                operator = button.innerText;
+            }
         } else {
             operator = button.innerText;
         }
