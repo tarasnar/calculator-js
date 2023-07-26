@@ -4,19 +4,20 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Calculator</title>
-        <script src="script.js" defer></script>
+        <link rel="icon" type="image/x-icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/GNOME_Calculator_icon_2021.svg/2048px-GNOME_Calculator_icon_2021.svg.png">
         <link href="style.css" rel="stylesheet">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@600&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Viga&display=swap" rel="stylesheet">
+        <script src="script.js" defer></script>
     </head>
     <body>
         <div id="calc-screen"></div>
         <div id="calc-body">
             <div class="button-container">
                 <button class="clear">AC</button>
-                <button class="functional">+/-</button>
-                <button class="functional">%</button>
+                <button class="numbers functional">+/-</button>
+                <button class="functional" id="percent">%</button>
                 <button class="operators">/</button>
             </div>
             <div class="button-container">
@@ -39,7 +40,7 @@
             </div>
             <div class="button-container">
                 <button class="numbers" id="zero">0</button>
-                <button>.</button>
+                <button class="numbers">.</button>
                 <button class="evaluation">=</button>
             </div>
         </div>
